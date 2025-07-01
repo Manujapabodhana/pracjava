@@ -1,18 +1,27 @@
- const form = document.getElementById("priceForm");
-    const priceInput = document.getElementById("price");
-    const quantityInput = document.getElementById("quantity");
-    const totalDisplay = document.getElementById("totalDisplay");
+function calculateTotal(){
+    let price = parseFloat(document.getElementById("price").value);
+    let quantity = parseInt(document.getElementById("quantity").value);
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault(); // Stop page reload
+    // Check if inputs are valid numbers
+    if (isNaN(price) || isNaN(quantity) || price <= 0 || quantity <= 0) {
+        document.getElementById("total").value = "Invalid input";
+        return;
+    }
 
-      const price = parseFloat(priceInput.value);
-      const quantity = parseInt(quantityInput.value);
+    let total = price * quantity;
+    document.getElementById("total").value = "$" + total.toFixed(2);
+}
 
-      if (!isNaN(price) && !isNaN(quantity)) {
-        const total = price * quantity;
-        totalDisplay.innerHTML = `<h3>Total: Rs. ${total.toFixed(2)}</h3>`;
-      } else {
-        totalDisplay.innerHTML = `<p>Please enter valid numbers</p>`;
-      }
+// Get the form and add event listener
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("priceForm");
+    
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent form from refreshing the page
+        calculateTotal();
     });
+    
+    // Optional: Calculate in real-time when inputs change
+    document.getElementById("price").addEventListener("input", calculateTotal);
+    document.getElementById("quantity").addEventListener("input", calculateTotal);
+});
