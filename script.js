@@ -1,15 +1,18 @@
-let employee ={
-    firstname : "Nimal",
-    'first name ' : "Mcodes",
-    lastname :"Perera",
-    age: 20,
-    iscitizen : true,
+ const form = document.getElementById("priceForm");
+    const priceInput = document.getElementById("price");
+    const quantityInput = document.getElementById("quantity");
+    const totalDisplay = document.getElementById("totalDisplay");
 
-    getmsg : function(p1){
-        alert (this.firstname+ " " + this.lastname+ " is " +this.age+ " years old");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Stop page reload
 
-    }
-}
+      const price = parseFloat(priceInput.value);
+      const quantity = parseInt(quantityInput.value);
 
-// Call the method correctly
-employee.getmsg();
+      if (!isNaN(price) && !isNaN(quantity)) {
+        const total = price * quantity;
+        totalDisplay.innerHTML = `<h3>Total: Rs. ${total.toFixed(2)}</h3>`;
+      } else {
+        totalDisplay.innerHTML = `<p>Please enter valid numbers</p>`;
+      }
+    });

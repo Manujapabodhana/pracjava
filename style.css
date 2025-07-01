@@ -33,6 +33,37 @@ input {
   box-sizing: border-box;
 }
 
+.total-row {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+}
+
+.total-row label {
+  color: #27ae60;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.total-row input {
+  background-color: #ffffff;
+  border: 2px solid #27ae60;
+  color: #27ae60;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  cursor: default;
+}
+
+.total-row input:focus {
+  outline: none;
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+}
+
 button {
   width: 100%;
   margin-top: 20px;
